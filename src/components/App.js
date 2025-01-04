@@ -1,32 +1,34 @@
-
 import React from "react";
-import './../styles/App.css';
-import React from "react";
-import "./../styles/App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import NavBar from "./NavBar";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
 
-const App = () => {
+function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+          </ul>
+        </nav>
 
-export default App;
-const App = () => {
-  return (
-    <div>
-        {/* Do not remove the main div */}
-    </div>
-  )
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
